@@ -1,30 +1,41 @@
-<!-- frontend/components/Quiz.vue -->
-
 <template>
-  <div class="quiz">
-    <h2>{{ quiz.title }}</h2>
-    <div v-for="(question, index) in quiz.questions" :key="index" class="question">
-      <p>{{ question.text }}</p>
-      <div v-for="choice in question.choices" :key="choice.id" class="choice">
-        <input
-          type="radio"
-          :id="choice.id"
-          :value="choice.id"
-          v-model="answers[index]"
-        />
-        <label :for="choice.id">{{ choice.text }}</label>
+  <div>
+    <div v-html="sanitizeHTML(userContent)"></div>
+    <div class="quiz">
+      <h2>{{ quiz.title }}</h2>
+      <div
+        v-for="(question, index) in quiz.questions"
+        :key="index"
+        class="question"
+      >
+        <p>{{ question.text }}</p>
+        <div v-for="choice in question.choices" :key="choice.id" class="choice">
+          <input
+            :id="choice.id"
+            v-model="answers[index]"
+            type="radio"
+            :value="choice.id"
+          />
+          <label :for="choice.id">{{ choice.text }}</label>
+        </div>
       </div>
+      <button class="submit-btn" @click="submitQuiz">Submit Quiz</button>
     </div>
-    <button @click="submitQuiz" class="submit-btn">Submit Quiz</button>
   </div>
 </template>
 
 <script>
+import { sanitizeHTML } from '@/sanitizers/sanitize'
+
 export default {
   props: {
     quiz: {
       type: Object,
       required: true,
+    },
+    userContent: {
+      type: String,
+      default: '',
     },
   },
   data() {
@@ -38,7 +49,7 @@ export default {
       try {
         await this.$axios.post('/api/quiz-results/', {
           quiz: this.quiz.id,
-          score: score,
+          score,
         })
         this.$emit('quiz-completed', score)
       } catch (error) {
@@ -49,12 +60,17 @@ export default {
       let correctAnswers = 0
       this.quiz.questions.forEach((question, index) => {
         const selectedChoiceId = this.answers[index]
-        const correctChoice = question.choices.find(choice => choice.is_correct)
+        const correctChoice = question.choices.find(
+          (choice) => choice.is_correct
+        )
         if (selectedChoiceId === correctChoice.id) {
           correctAnswers++
         }
       })
       return (correctAnswers / this.quiz.questions.length) * 100
+    },
+    sanitizeHTML(html) {
+      return sanitizeHTML(html)
     },
   },
 }
@@ -72,7 +88,7 @@ export default {
   margin-bottom: 10px;
 }
 .submit-btn {
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
   padding: 10px 20px;
   border: none;

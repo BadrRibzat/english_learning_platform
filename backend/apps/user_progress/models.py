@@ -1,5 +1,6 @@
 # apps/user_progress/models.py
 
+from djongo.models import DjongoManager
 from djongo import models
 
 class UserProgress(models.Model):

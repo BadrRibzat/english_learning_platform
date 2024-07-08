@@ -1,5 +1,6 @@
 # apps/quizzes/models.py
 
+from djongo.models import DjongoManager
 from djongo import models
 
 class Quiz(models.Model):

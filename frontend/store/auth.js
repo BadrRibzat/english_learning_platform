@@ -1,4 +1,5 @@
 // frontend/store/auth.js
+import { sanitizeHTML } from '@/sanitizers/sanitize'
 
 export const state = () => ({
   user: null,
@@ -7,7 +8,7 @@ export const state = () => ({
 
 export const mutations = {
   SET_USER(state, user) {
-    state.user = user
+    state.user = sanitizeHTML(user)
   },
   SET_TOKEN(state, token) {
     state.token = token

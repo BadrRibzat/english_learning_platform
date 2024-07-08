@@ -1,27 +1,17 @@
-# apps/courses/models.py
+# backend/apps/courses/models.py
 
 from djongo import models
-
-class Level(models.Model):
-    name = models.CharField(max_length=100)
-    description = models.TextField()
-
-    class Meta:
-        abstract = True
+from djongo.models import DjongoManager
 
 class Lesson(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
     content = models.TextField()
     order = models.IntegerField()
+    
+    # Adding the DjongoManager
+    objects = DjongoManager()
 
-    class Meta:
-        abstract = True
+    def __str__(self):
+        return self.title
 
-class Course(models.Model):
-    name = models.CharField(max_length=100)
-    description = models.TextField()
-    levels = models.ArrayField(model_container=Level)
-    lessons = models.ArrayField(model_container=Lesson)
-
-    objects = models.DjongoManager()

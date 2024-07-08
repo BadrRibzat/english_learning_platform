@@ -15,3 +15,4 @@ class SkillProgressViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         return SkillProgress.objects.filter(user=self.request.user)
+

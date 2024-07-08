@@ -5,7 +5,11 @@
     <div :class="['flashcard-inner', { 'is-flipped': isFlipped }]">
       <div class="flashcard-front">
         <p>{{ flashcard.front_text }}</p>
-        <img v-if="flashcard.image" :src="flashcard.image" alt="Flashcard image" />
+        <img
+          v-if="flashcard.image"
+          :src="flashcard.image"
+          alt="Flashcard image"
+        />
       </div>
       <div class="flashcard-back">
         <p>{{ flashcard.back_text }}</p>
@@ -52,7 +56,8 @@ export default {
 .flashcard-inner.is-flipped {
   transform: rotateY(180deg);
 }
-.flashcard-front, .flashcard-back {
+.flashcard-front,
+.flashcard-back {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -64,7 +69,7 @@ export default {
   border: 1px solid #ccc;
   border-radius: 10px;
   padding: 20px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 .flashcard-back {
   transform: rotateY(180deg);
