@@ -44,6 +44,39 @@ npm install
 - 2.Start the development server:
 npm run dev
 
+- 3.Generating Frontend Files process:
+Generate the following Nuxt.js files with the appropriate code:
+- assets/css/main.css
+- components/Footer.vue
+- components/Header.vue
+- components/NavigationBare.vue
+- components/LessonCard.vue
+- layouts/default.vue
+- pages/about.vue
+- pages/contact.vue
+- pages/index.vue
+- pages/login.vue
+- pages/portfolio.vue
+- pages/register.vue
+- plugins/store.js
+- static/favicon.ico
+- static/logo.png
+- store/index.js
+- store/modules/auth.js
+- store/modules/lessons.js
+# Note: Nuxt can manage between .ts extension and .js extention automatically which make it usable for both in a single project .
+
+- 4. Creating the Lessons within each Level:
+- 5.Navigate to pages/lessons/level1 and create lesson1.vue, lesson2.vue, and lesson3.vue.
+Navigate to pages/lessons/level3 and create lesson1.vue, lesson2.vue, and lesson3.vue.
+- 6.Repeat process to Create all Lessons Within All Levels till Level5/lessons/level5 and create lesson1.vue, lesson2.vue, and lesson3.vue.
+-Notice: this is an Example Command Sequence For Level1:
+- mkdir -p english_learning_platform/frontend/pages/lessons/level1
+- cd english_learning_platform/frontend/pages/lessons/level1
+- touch lesson1.vue lesson2.vue lesson3.vue
+- Repeat the process for levels 2, 3, 4, and 5.
+
+
 
 
 

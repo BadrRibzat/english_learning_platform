@@ -1,23 +1,39 @@
-# english_learning_platform/backend/myapp/views.py:
+# backend/myapp/views.py
 
-from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
-import json
-from .models import User
+from django.contrib.auth.models import User
+from rest_framework import status
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from .models import Lesson, Exercise, UserProgress
 
-@csrf_exempt
+@api_view(['POST'])
 def register_user(request):
-    if request.method == 'POST':
-        data = json.loads(request.body)
-        user = User(
-            username=data['username'],
-            email=data['email'],
-            password=data['password']  # Note: In a real app, hash the password!
-        )
-        user.save()
-        return JsonResponse({'message': 'User registered successfully'}, status=201)
-    return JsonResponse({'error': 'Invalid request method'}, status=400)
+    username = request.data.get('username')
+    email = request.data.get('email')
+    password = request.data.get('password')
 
+    if not username or not email or not password:
+        return Response({'error': 'Please provide username, email, and password'}, status=status.HTTP_400_BAD_REQUEST)
+
+    try:
+        user = User.objects.create_user(username=username, email=email, password=password)
+        return Response({'message': 'User registered successfully'}, status=status.HTTP_201_CREATED)
+    except:
+        return Response({'error': 'Unable to register user'}, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['GET'])
 def get_users(request):
-    users = list(User.objects.values('username', 'email'))
-    return JsonResponse({'users': users})
+    users = User.objects.all().values('username', 'email')
+    return Response({'users': list(users)})
+
+@api_view(['GET'])
+def admin_dashboard(request):
+    user_data = User.objects.all().values('username', 'email')
+    lesson_data = Lesson.objects.all().values('title', 'level', 'order')
+    exercise_data = Exercise.objects.all().values('lesson__title', 'question')
+
+    return Response({
+        'user_data': list(user_data),
+        'lesson_data': list(lesson_data),
+        'exercise_data': list(exercise_data)
+    })

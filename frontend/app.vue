@@ -1,10 +1,17 @@
-<!-- app.vue -->
 <template>
-  <div>
-    <nav>
-      <NuxtLink to="/">Home</NuxtLink>
-      <NuxtLink to="/register">Register</NuxtLink>
-    </nav>
-    <NuxtPage />
+  <div id="app">
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
   </div>
 </template>
+
+<script>
+export default {
+  name: 'App'
+}
+</script>
+
+<style>
+/* Add any global styles here */
+</style>
