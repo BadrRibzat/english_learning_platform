@@ -1,4 +1,4 @@
-<!-- pages/index.vue -->
+<!--english_learning_platform/frontend/pages/HomePage.vue-->
 <template>
   <div>
     <h1>Welcome to English Learning Platform</h1>

@@ -1,62 +1,61 @@
-# English Learning Platform
+# Alx-Se webstack portfolio project
+- English_learning_platfiorm:
+- Overview
 
-## Project Setup:
+- This is a web application built using Django (backend) and 
+- Nuxt.js (frontend) for an English learning platform. 
+- Instead of using a traditional SQL database like SQLite or PostgreSQL, 
+- This project uses MongoDB as the database.
+- Backend Setup
+-  1.Create a virtual environment:
+python3 -m venv env
+source env/bin/activate
 
-### Note, HighLight Important: 
- When Modify The config/settings.py file to use MongoDB
-You Can Not use (makemigration), according sources from the Django community after my reaserche because i have faced this issues durring my first project setting up that's why I did my researches and i found it more important to be noticed .
+- 2.Install dependencies:
+pip install -r requirements.txt
 
-### 1. Setting up the Backend with Django and MongoDB:
+- 3.Configure MongoDB connection:
+- Install the djongo package, which is a Django adapter for MongoDB:
+pip install djongo djongo
 
-#### Creating a New Project and Virtual Environment:
-
-To get started, create a new directory for your project and set up a virtual environment to keep everything isolated:
-
-```bash
-mkdir english_learning_platform
-cd english_learning_platform
-python3 -m venv venv
-source venv/bin/activate
-
-### Installing the required packages:
-pip install django djongo pymongo dnspython
-
-### Creating a new Django project:
-django-admin startproject config backend
-cd backend
-
-### Modify the config/settings.py file to use MongoDB:
-# config/settings.py
-
+- Update the settings.py file in the backend directory to configure the MongoDB connection:
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
-        'NAME': 'english_learning_db',
+        'NAME': 'english_learning_platform',
         'CLIENT': {
             'host': 'localhost',
             'port': 27017,
+            'username': 'BadrRibzat',
+            'password': '9474b1d7569927d3b35785370fe8910a',
+            'authSource': 'english_learning_platform'
         }
     }
 }
+- 4.Run migrations:
+	Note: when using MongoDB and Django You should not run migrations
+python manage.py runserver
 
-# Adding the following apps to the INSTALLED_APPS:
+-Frontend Setup
+- 1.Install dependencies:
+cd frontend
+npm install
 
-INSTALLED_APPS = [
-    # ... other installed apps
-    'apps.authentication',
-    'apps.courses',
-    'apps.flashcards',
-    'apps.quizzes',
-    'apps.user_progress',
-]
+- 2.Start the development server:
+npm run dev
 
-# Note:
-# When modifying the `config/settings.py` file to use MongoDB,
-# you cannot use `makemigrations` as per sources from the Django community after my research. I encountered this issue during my initial project setup and conducted further research to address it.
 
-### Creating the app directories:
-mkdir -p apps/{authentication,courses,flashcards,quizzes,user_progress}
 
-This setup establishes the backend structure for the English Learning Platform using Django with MongoDB as the database backend. Further steps will involve developing frontend components, integrating APIs, and enhancing functionality.
+
+
+
+
+
+
+
+
+
+
+
 
 
