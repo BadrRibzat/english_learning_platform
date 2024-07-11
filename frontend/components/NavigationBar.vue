@@ -27,6 +27,7 @@ const logout = () => {
 }
 </script>
 
+
 <style scoped>
 nav {
   display: flex;

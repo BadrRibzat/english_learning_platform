@@ -1,11 +1,11 @@
-// store/auth.js
+// english_learning_platform/frontend/store/auth.js
 
-export const state = () => ({
+const state = () => ({
   user: null,
   token: null,
 })
 
-export const mutations = {
+const mutations = {
   SET_USER(state, user) {
     state.user = user
   },
@@ -14,7 +14,7 @@ export const mutations = {
   },
 }
 
-export const actions = {
+const actions = {
   async login({ commit }, { username, password }) {
     try {
       const response = await this.$axios.post('/login/', { username, password })
@@ -40,7 +40,16 @@ export const actions = {
   },
 }
 
-export const getters = {
+const getters = {
   isAuthenticated: state => !!state.token,
   isAdmin: state => state.user?.is_staff || false,
 }
+
+export default {
+  namespaced: true,
+  state,
+  mutations,
+  actions,
+  getters,
+}
+

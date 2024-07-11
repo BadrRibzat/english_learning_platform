@@ -1,5 +1,4 @@
-<!-- frontend/pages/register.vue -->
-
+<!-- english_learning_platform/frontend/pages/register.vue -->
 <template>
   <div class="container">
     <h2>Register</h2>
@@ -23,17 +22,19 @@
 
 <script setup>
 import { ref } from 'vue'
-import { useAuthStore } from '~/store/auth'
+import { useStore } from 'vuex'
+import { useRouter } from 'vue-router'
 
 const username = ref('')
 const email = ref('')
 const password = ref('')
-const authStore = useAuthStore()
+const store = useStore()
+const router = useRouter()
 
 const register = async () => {
   try {
-    await authStore.register(username.value, email.value, password.value)
-    navigateTo('/login')
+    await store.dispatch('auth/register', { username: username.value, email: email.value, password: password.value })
+    router.push('/login')
   } catch (error) {
     console.error('Registration failed:', error)
   }

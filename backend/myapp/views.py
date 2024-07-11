@@ -1,39 +1,89 @@
-# backend/myapp/views.py
+# backend/myapp/views.py:
 
-from django.contrib.auth.models import User
-from rest_framework import status
-from rest_framework.decorators import api_view
+from rest_framework import viewsets, permissions, status
+from rest_framework.decorators import action
 from rest_framework.response import Response
-from .models import Lesson, Exercise, UserProgress
+from django.contrib.auth.models import User
+from .models import Level, Lesson, Quiz, UserProgress, UserProfile
+from .serializers import (
+    UserSerializer, LevelSerializer, LessonSerializer,
+    QuizSerializer, UserProgressSerializer, UserProfileSerializer
+)
 
-@api_view(['POST'])
-def register_user(request):
-    username = request.data.get('username')
-    email = request.data.get('email')
-    password = request.data.get('password')
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = [permissions.IsAdminUser]
 
-    if not username or not email or not password:
-        return Response({'error': 'Please provide username, email, and password'}, status=status.HTTP_400_BAD_REQUEST)
+class LevelViewSet(viewsets.ModelViewSet):
+    queryset = Level.objects.all()
+    serializer_class = LevelSerializer
 
-    try:
-        user = User.objects.create_user(username=username, email=email, password=password)
-        return Response({'message': 'User registered successfully'}, status=status.HTTP_201_CREATED)
-    except:
-        return Response({'error': 'Unable to register user'}, status=status.HTTP_400_BAD_REQUEST)
+    def get_permissions(self):
+        if self.action in ['list', 'retrieve']:
+            permission_classes = [permissions.AllowAny]
+        else:
+            permission_classes = [permissions.IsAdminUser]
+        return [permission() for permission in permission_classes]
 
-@api_view(['GET'])
-def get_users(request):
-    users = User.objects.all().values('username', 'email')
-    return Response({'users': list(users)})
+class LessonViewSet(viewsets.ModelViewSet):
+    queryset = Lesson.objects.all()
+    serializer_class = LessonSerializer
 
-@api_view(['GET'])
-def admin_dashboard(request):
-    user_data = User.objects.all().values('username', 'email')
-    lesson_data = Lesson.objects.all().values('title', 'level', 'order')
-    exercise_data = Exercise.objects.all().values('lesson__title', 'question')
+    def get_permissions(self):
+        if self.action in ['list', 'retrieve']:
+            permission_classes = [permissions.IsAuthenticated]
+        else:
+            permission_classes = [permissions.IsAdminUser]
+        return [permission() for permission in permission_classes]
 
-    return Response({
-        'user_data': list(user_data),
-        'lesson_data': list(lesson_data),
-        'exercise_data': list(exercise_data)
-    })
+class QuizViewSet(viewsets.ModelViewSet):
+    queryset = Quiz.objects.all()
+    serializer_class = QuizSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+class UserProgressViewSet(viewsets.ModelViewSet):
+    queryset = UserProgress.objects.all()
+    serializer_class = UserProgressSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        return UserProgress.objects.filter(user=self.request.user)
+
+    @action(detail=False, methods=['post'])
+    def update_progress(self, request):
+        lesson_id = request.data.get('lesson_id')
+        completed = request.data.get('completed', False)
+        score = request.data.get('score', 0)
+
+        try:
+            progress, created = UserProgress.objects.get_or_create(
+                user=request.user,
+                lesson_id=lesson_id,
+                defaults={'completed': completed, 'score': score}
+            )
+            if not created:
+                progress.completed = completed
+                progress.score = score
+                progress.save()
+            return Response({'status': 'progress updated'}, status=status.HTTP_200_OK)
+        except Exception as e:
+            return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
+
+class UserProfileViewSet(viewsets.ModelViewSet):
+    queryset = UserProfile.objects.all()
+    serializer_class = UserProfileSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        return UserProfile.objects.filter(user=self.request.user)
+
+    @action(detail=False, methods=['post'])
+    def update_language(self, request):
+        language = request.data.get('language')
+        if language:
+            profile, created = UserProfile.objects.get_or_create(user=request.user)
+            profile.preferred_language = language
+            profile.save()
+            return Response({'status': 'language updated'}, status=status.HTTP_200_OK)
+        return Response({'error': 'Language not provided'}, status=status.HTTP_400_BAD_REQUEST)

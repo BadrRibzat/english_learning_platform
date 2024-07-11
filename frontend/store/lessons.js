@@ -1,26 +1,36 @@
-// store/lessons.js
+// english_learning_platform/frontend/store/lessons.js
 
-export const state = () => ({
+const state = () => ({
   lessons: []
 })
 
-export const mutations = {
+const mutations = {
   SET_LESSONS(state, lessons) {
     state.lessons = lessons
   }
 }
 
-export const actions = {
+const actions = {
   async fetchLessons({ commit }) {
     try {
-      const response = await this.$axios.get('/lessons/')
-      commit('SET_LESSONS', response.data)
+      const response = await fetch('/api/lessons')
+      const data = await response.json()
+      commit('SET_LESSONS', data)
     } catch (error) {
-      console.error('Fetch lessons error:', error)
+      console.error('Failed to fetch lessons:', error)
     }
   }
 }
 
-export const getters = {
-  allLessons: state => state.lessons
+const getters = {
+  lessons: (state) => state.lessons
 }
+
+export default {
+  namespaced: true,
+  state,
+  mutations,
+  actions,
+  getters
+}
+

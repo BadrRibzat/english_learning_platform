@@ -1,5 +1,4 @@
 <!-- frontend/pages/admin-dashboard.vue -->
-
 <template>
   <div class="container">
     <h1>Admin Dashboard</h1>
@@ -31,6 +30,7 @@
 </template>
 
 <script setup>
+import { onMounted } from 'vue'
 import { useAdminStore } from '~/store/admin'
 
 const adminStore = useAdminStore()
@@ -39,7 +39,9 @@ onMounted(async () => {
   await adminStore.fetchDashboardData()
 })
 
+// Define page metadata for middleware handling
 definePageMeta({
   middleware: ['auth', 'admin']
 })
 </script>
+

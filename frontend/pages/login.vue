@@ -1,5 +1,4 @@
-<!-- frontend/pages/login.vue -->
-
+<!-- english_learning_platform/frontend/pages/login.vue -->
 <template>
   <div class="container">
     <h2>Login</h2>
@@ -19,16 +18,18 @@
 
 <script setup>
 import { ref } from 'vue'
-import { useAuthStore } from '~/store/auth'
+import { useStore } from 'vuex'
+import { useRouter } from 'vue-router'
 
 const username = ref('')
 const password = ref('')
-const authStore = useAuthStore()
+const store = useStore()
+const router = useRouter()
 
 const login = async () => {
   try {
-    await authStore.login(username.value, password.value)
-    navigateTo('/')
+    await store.dispatch('auth/login', { username: username.value, password: password.value })
+    router.push('/')
   } catch (error) {
     console.error('Login failed:', error)
   }

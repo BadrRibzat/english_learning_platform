@@ -6,17 +6,18 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "clean": "rm -rf .nuxt dist"
   },
   "dependencies": {
     "@nuxt/nitro": "^0.10.0",
-    "axios": "^1.7.2",
     "nuxt": "^3.12.3",
     "vue": "^3.3.4",
     "vuex": "^4.1.0"
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
-    "@types/node": "^18"
+    "@types/node": "^18",
+    "@nuxtjs/tailwindcss": "^6.8.0"
   }
 }

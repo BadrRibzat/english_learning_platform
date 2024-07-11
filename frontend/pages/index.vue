@@ -1,4 +1,4 @@
-<!-- frontend/pages/index.vue -->
+<!-- english_learning_platform/frontend/pages/index.vue -->
 <template>
   <div class="container">
     <h1>Welcome to the English Learning Platform</h1>
@@ -16,11 +16,10 @@
 
 <script setup>
 import { computed, onMounted } from 'vue'
-import { useStore, mapState } from 'vuex'
+import { useStore } from 'vuex'
 
 const store = useStore()
-
-const { lessons } = mapState('lessons', ['lessons'])
+const lessons = computed(() => store.getters['lessons/lessons'])
 
 onMounted(() => {
   store.dispatch('lessons/fetchLessons')

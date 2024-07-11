@@ -1,8 +1,13 @@
 // frontend/middleware/auth.js
 
-export default defineNuxtRouteMiddleware((to, from) => {
-  const authStore = useAuthStore()
-  if (!authStore.isAuthenticated) {
-    return navigateTo('/login')
+import { useStore } from 'vuex'
+
+export default defineNuxtRouteMiddleware((to, from, next) => {
+  const store = useStore()
+  if (!store.getters['auth/isAuthenticated']) {
+    return next('/login')
   }
+  next()
 })
+
+

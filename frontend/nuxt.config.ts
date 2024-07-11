@@ -6,7 +6,7 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
   
   modules: [
-    // Add any other modules you might be using
+    // Add any other modules that you might be using 
   ],
   
     plugins: ['~/plugins/vuex.js'],
@@ -29,7 +29,7 @@ export default defineNuxtConfig({
   
   // Router configuration
   router: {
-    middleware: ['auth'] // Assuming you have an auth middleware
+    middleware: ['auth'] // middleware auth
   },
   
   // Build configuration
@@ -58,3 +58,4 @@ export default defineNuxtConfig({
   
   compatibilityDate: '2024-07-10'
 })
+

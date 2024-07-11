@@ -1,4 +1,4 @@
-// english_learning_platform/frontend/store/index.js:
+// english_learning_platform/frontend/store/index.js
 
 import auth from './auth'
 import lessons from './lessons'
@@ -21,3 +21,4 @@ export const modules = {
   lessons,
   admin
 }
+

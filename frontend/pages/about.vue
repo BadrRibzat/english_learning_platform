@@ -1,12 +1,11 @@
+<!-- english_learning_platform/frontend/pages/about.vue -->
 <template>
-  <div>
-    <!-- Component's HTML goes here -->
+  <div class="container">
+    <h1>About Us</h1>
+    <p>This is the About page content.</p>
   </div>
 </template>
 
-<script>
-export default {
-  name: 'ComponentName',
-  // Logic goes here
-}
+<script setup>
 </script>
+

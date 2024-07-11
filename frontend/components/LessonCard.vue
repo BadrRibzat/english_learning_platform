@@ -1,20 +1,27 @@
 <!-- frontend/components/LessonCard.vue -->
-
 <template>
-  <div class="lesson-card">
-    <h3>{{ lesson.title }}</h3>
-    <p>Level: {{ lesson.level }}</p>
-    <NuxtLink :to="`/lessons/level${lesson.level}/lesson${lesson.order}`" class="btn">Start Lesson</NuxtLink>
+  <div class="bg-white shadow-lg rounded-lg overflow-hidden transition-transform duration-300 hover:scale-105">
+    <div class="p-4">
+      <h3 class="text-xl font-semibold mb-2">{{ lesson.title }}</h3>
+      <p class="text-gray-600">{{ lesson.description }}</p>
+    </div>
+    <div class="bg-blue-500 p-4">
+      <nuxt-link :to="`/lessons/${lesson.id}`" class="text-white font-bold hover:underline">
+        Start Lesson
+      </nuxt-link>
+    </div>
   </div>
 </template>
 
-<script setup>
-defineProps({
-  lesson: {
-    type: Object,
-    required: true
+<script>
+export default {
+  props: {
+    lesson: {
+      type: Object,
+      required: true
+    }
   }
-})
+}
 </script>
 
 <style scoped>
