@@ -1,17 +1,15 @@
+<!--fronten/app.vue-->
 <template>
-  <div id="app">
-    <NuxtLayout>
+  <div class="min-h-screen flex flex-col">
+    <Navbar />
+    <main class="flex-grow">
       <NuxtPage />
-    </NuxtLayout>
+    </main>
+    <Footer />
   </div>
 </template>
 
-<script>
-export default {
-  name: 'App'
-}
+<script setup>
+import Navbar from '~/layouts/Navbar.vue'
+import Footer from '~/layouts/Footer.vue'
 </script>
-
-<style>
-/* Add any global styles here */
-</style>

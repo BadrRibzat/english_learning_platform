@@ -1,5 +1,4 @@
 <!-- Updated frontend/components/ThemeSwitcher.vue-->
-
 <template>
   <div class="theme-switcher">
     <button @click="setTheme('light')" :class="{ active: currentTheme === 'light' }">Light</button>
@@ -29,8 +28,6 @@ export default {
 </script>
 
 
-
-<!--Updated Styles for frontend/components/ThemeSwitcher.vue-->
 
 <style scoped>
 .theme-switcher button {

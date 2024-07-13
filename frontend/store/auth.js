@@ -1,21 +1,20 @@
 //Updated frontend/store/auth.ts
 
-import { defineStore } from 'pinia';
+import { defineStore } from 'pinia'
 
 export const useAuthStore = defineStore('auth', {
   state: () => ({
-    isAuthenticated: false,
     user: null,
+    isAuthenticated: false,
   }),
-  getters: {
-    isUserAuthenticated: (state) => state.isAuthenticated,
-    currentUser: (state) => state.user,
-  },
   actions: {
     setUser(user) {
-      this.user = user;
-      this.isAuthenticated = !!user;
+      this.user = user
+      this.isAuthenticated = !!user
+    },
+    logout() {
+      this.user = null
+      this.isAuthenticated = false
     },
   },
-});
-
+})

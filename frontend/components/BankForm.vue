@@ -1,4 +1,5 @@
-<!-- BankTransferForm.vue -->
+<!--frontend/components/BankTransferForm.vue-->
+
 <template>
   <div>
     <h1>Bank Transfer Form</h1>

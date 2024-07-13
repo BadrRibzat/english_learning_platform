@@ -1,39 +1,42 @@
-// Updated frontend/nuxt.config.ts
-
-import { defineNuxtConfig } from 'nuxt/config'
-
+// frontend/nuxt.config.ts
 export default defineNuxtConfig({
-  css: ['@/assets/styles/tailwind.css'],
-
   modules: [
     '@nuxtjs/tailwindcss',
-    // Ensure this is the correct module name
-    // '@nuxtjs/auth-next',
-    '@pinia/nuxt' // Add Pinia module
+    '@pinia/nuxt',
   ],
 
-  // auth: {
-  //   strategies: {
-  //     auth0: {
-  //       domain: 'YOUR_AUTH0_DOMAIN',
-  //       clientId: 'YOUR_AUTH0_CLIENT_ID',
-  //       audience: 'https://your-api-identifier.com',
-  //       scope: 'openid profile email'
-  //     }
-  //   }
-  // },
-  buildModules: [
-    '@nuxtjs/eslint-module',
-    '@nuxt/typescript-build',
+  plugins: [
+  '@/plugins/auth0'
+],
+  css: [
+    '~/assets/styles/tailwind.css',
   ],
-
-  tailwindcss: {
-    configPath: 'tailwind.config.js'
-  },
 
   build: {
-    extractCSS: true
+    transpile: ['@auth0/auth0-vue']
   },
 
-  compatibilityDate: '2024-07-12'
+  runtimeConfig: {
+    public: {
+      auth0: {
+        domain: process.env.AUTH0_DOMAIN,
+        clientId: process.env.AUTH0_CLIENT_ID,
+      }
+    }
+  },
+
+  app: {
+    head: {
+      title: 'English Learning Platform',
+      meta: [
+        { charset: 'utf-8' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      ],
+      link: [
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      ]
+    }
+  },
+
+  compatibilityDate: '2024-07-13'
 })
