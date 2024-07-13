@@ -1,19 +1,25 @@
-<!-- frontend/components/Footer.vue -->
+<!--Updated frontend/components/Footer.vue -->
 
 <template>
-  <footer>
+  <footer class="bg-gray-800 p-4 text-center text-white">
     <p>&copy; 2024 English Learning Platform. All rights reserved.</p>
   </footer>
 </template>
 
+
+<script setup>
+</script>
+
+<!--Updated Styles for frontend/components/Footer.vue-->
+
 <style scoped>
 footer {
-  background: #333;
-  color: #fff;
-  text-align: center;
-  padding: 1rem;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
+  background-color: #083344;
+  color: #d4d4d8;
+  padding: 10px 20px;
+  border-top: 1px solid #134e4a;
 }
 </style>
+
+
+

@@ -1,11 +1,12 @@
-<!-- english_learning_platform/frontend/pages/about.vue -->
+<!--Updated pages/about.vue-->
+
 <template>
-  <div class="container">
+  <div>
     <h1>About Us</h1>
-    <p>This is the About page content.</p>
+    <p>
+      Welcome to our English learning platform! We are dedicated to teaching English to kids and non-English speakers using magical and fun styles and designs that make learning enjoyable. Our platform is designed to engage learners through interactive content and activities that are both educational and entertaining.
+    </p>
   </div>
 </template>
 
-<script setup>
-</script>
 

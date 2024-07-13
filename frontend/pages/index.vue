@@ -1,27 +1,37 @@
-<!-- english_learning_platform/frontend/pages/index.vue -->
+<!--Updated frontend/pages/index.vue -->
+
 <template>
-  <div class="container">
-    <h1>Welcome to the English Learning Platform</h1>
-    <p>Start your journey to master the English language today!</p>
-    <div v-if="lessons && lessons.length">
-      <h2>Available Lessons</h2>
-      <div v-for="lesson in lessons" :key="lesson.id">
-        <h3>{{ lesson.title }}</h3>
-        <p>Level: {{ lesson.level }}</p>
-        <NuxtLink :to="`/lessons/level${lesson.level}/lesson${lesson.order}`">Start Lesson</NuxtLink>
-      </div>
+  <div>
+    <Navbar />
+    <div class="container mx-auto mt-10">
+      <h1 class="text-4xl font-bold text-center">Welcome to the English Learning Platform</h1>
+      <p class="mt-4 text-center text-gray-600">Start your journey to mastering English today!</p>
     </div>
+    <Footer />
   </div>
 </template>
 
 <script setup>
-import { computed, onMounted } from 'vue'
-import { useStore } from 'vuex'
-
-const store = useStore()
-const lessons = computed(() => store.getters['lessons/lessons'])
-
-onMounted(() => {
-  store.dispatch('lessons/fetchLessons')
-})
+import Navbar from '~/components/Navbar.vue'
+import Footer from '~/components/Footer.vue'
 </script>
+
+
+
+<!--Updated Styles for frontend/pages/index.vue-->
+
+<style scoped>
+.container {
+  background-color: #d4d4d8;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px #134e4a;
+  padding: 20px;
+}
+h1 {
+  color: #6b7280;
+}
+p {
+  color: #71717a;
+}
+</style>
+

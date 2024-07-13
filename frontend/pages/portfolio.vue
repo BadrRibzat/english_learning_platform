@@ -1,45 +1,59 @@
-<!-- frontend/pages/portfolio.vue -->
+<!--Updated frontend/pages/portfolio.vue-->
 
 <template>
-  <div class="container">
-    <h2>Badr Ribzat's Portfolio</h2>
-    <div class="portfolio-info">
-      <p><strong>Email:</strong> badrribzat@gmail.com</p>
-      <p><strong>Full Name:</strong> Badr Ribzat</p>
-      <p><strong>Phone Number:</strong> +212627764176</p>
-      <p><strong>Location:</strong> Morocco</p>
+  <div>
+    <Navbar />
+    <div class="container mx-auto mt-10">
+      <h1 class="text-4xl font-bold">Technology Stack</h1>
+      <ul class="mt-4">
+        <li v-for="tech in technologies" :key="tech">{{ tech }}</li>
+      </ul>
     </div>
-    <div class="certifications">
-      <h3>Certifications</h3>
-      <!-- Add your certifications here -->
-    </div>
-    <div class="proficiency-meter">
-      <h3>Top 30 Technologies Proficiency</h3>
-      <div class="meter">
-        <div class="meter-fill" style="width: 50%;"></div>
-      </div>
-    </div>
+    <Footer />
   </div>
 </template>
 
+<script>
+export default {
+  data() {
+    return {
+      technologies: [
+        'Nuxt 3', 'TailwindCSS', 'Auth0', 'FontAwesome', 'Django', 
+        'Django REST Framework', 'Python3', 'MongoDB', 'Djongo',
+        'Node.js', 'Express.js', 'Docker', 'Google Translate API',
+        'ChatterBot', 'Vuex', 'Vuetify', 'Axios', 'ESLint'
+      ]
+    }
+  }
+}
+</script>
+
+
+
+<!--Updated Styles for frontend/pages/portfolio.vue-->
+
 <style scoped>
-.portfolio-info {
-  background: #fff;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+.container {
+  background-color: #d4d4d8;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px #134e4a;
+  padding: 20px;
 }
-
-.meter {
-  height: 20px;
-  background: #e0e0e0;
-  border-radius: 10px;
-  overflow: hidden;
+h1 {
+  color: #6b7280;
 }
-
-.meter-fill {
-  height: 100%;
-  background: #4caf50;
+ul {
+  list-style: none;
+  padding: 0;
+}
+li {
+  background-color: #a1a1aa;
+  color: #3f3f46;
+  margin: 8px 0;
+  padding: 10px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px #134e4a;
 }
 </style>
+
+

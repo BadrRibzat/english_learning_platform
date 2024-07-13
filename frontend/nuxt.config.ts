@@ -1,61 +1,39 @@
-// frontend/nuxt.config.ts
+// Updated frontend/nuxt.config.ts
+
+import { defineNuxtConfig } from 'nuxt/config'
 
 export default defineNuxtConfig({
-  devtools: { enabled: true },
-  
-  css: ['~/assets/css/main.css'],
-  
+  css: ['@/assets/styles/tailwind.css'],
+
   modules: [
-    // Add any other modules that you might be using 
+    '@nuxtjs/tailwindcss',
+    // Ensure this is the correct module name
+    // '@nuxtjs/auth-next',
+    '@pinia/nuxt' // Add Pinia module
   ],
-  
-    plugins: ['~/plugins/vuex.js'],
-  
-  runtimeConfig: {
-    public: {
-      apiBase: 'http://localhost:8000/api'
-    }
+
+  // auth: {
+  //   strategies: {
+  //     auth0: {
+  //       domain: 'YOUR_AUTH0_DOMAIN',
+  //       clientId: 'YOUR_AUTH0_CLIENT_ID',
+  //       audience: 'https://your-api-identifier.com',
+  //       scope: 'openid profile email'
+  //     }
+  //   }
+  // },
+  buildModules: [
+    '@nuxtjs/eslint-module',
+    '@nuxt/typescript-build',
+  ],
+
+  tailwindcss: {
+    configPath: 'tailwind.config.js'
   },
 
-  // Vuex configuration
-  vuex: {
-    strict: false // or true, depending on your preference
-  },
-  
-  // Axios configuration for API calls
-  axios: {
-    baseURL: 'http://localhost:8000/api',
-  },
-  
-  // Router configuration
-  router: {
-    middleware: ['auth'] // middleware auth
-  },
-  
-  // Build configuration
   build: {
-    transpile: [
-      'vuex',
-    ],
+    extractCSS: true
   },
-  
-  // Vite configuration for SCSS
-  vite: {
-    css: {
-      preprocessorOptions: {
-        scss: {
-          additionalData: '@import "~/assets/css/variables.scss";'
-        }
-      }
-    }
-  },
-  
-  // Auto-import components
-  components: true,
-  
-  // Client-side rendering
-  ssr: false,
-  
-  compatibilityDate: '2024-07-10'
-})
 
+  compatibilityDate: '2024-07-12'
+})

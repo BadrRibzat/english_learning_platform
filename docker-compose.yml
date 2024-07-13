@@ -1,0 +1,32 @@
+# docker-compose.yml
+
+version: '3.8'
+
+services:
+  web:
+    image: 'node:14'
+    working_dir: /app
+    volumes:
+      - ./frontend:/app
+    command: ['npm', 'run', 'dev']
+    ports:
+      - '3000:3000'
+
+  backend:
+    image: 'python:3.9'
+    working_dir: /app
+    volumes:
+      - ./backend:/app
+    command: ['python', 'manage.py', 'runserver', '0.0.0.0:8000']
+    ports:
+      - '8000:8000'
+
+  mongo:
+    image: 'mongo'
+    ports:
+      - '27017:27017'
+    environment:
+      MONGO_INITDB_DATABASE: english_learning_platform
+      MONGO_INITDB_ROOT_USERNAME: BadrRibzat
+      MONGO_INITDB_ROOT_PASSWORD: 9474b1d7569927d3b35785370fe8910a
+

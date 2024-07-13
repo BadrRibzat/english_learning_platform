@@ -1,0 +1,26 @@
+/* frontend/assets/styles/tailwind.css */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+}
+
+.dark {
+  --bg-color: #1a202c;
+  --text-color: #cbd5e0;
+}
+
+.high-contrast {
+  --bg-color: #000000;
+  --text-color: #ffdd00;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+

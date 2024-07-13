@@ -1,82 +1,58 @@
-<!-- frontend/pages/lessons/_id.vue -->
+<!-- frontend/pages/lessson/_id.vue-->
+
 <template>
-  <div class="container mx-auto px-4 py-8">
-    <h1 class="text-3xl font-bold mb-6">{{ lesson.title }}</h1>
-    <div class="bg-white shadow-lg rounded-lg p-6">
-      <div v-html="lesson.content" class="prose max-w-none mb-8"></div>
-      <div v-if="quiz" class="mt-8">
-        <h2 class="text-2xl font-semibold mb-4">Quiz</h2>
-        <form @submit.prevent="submitQuiz">
-          <div v-for="(question, index) in quiz" :key="index" class="mb-6">
-            <p class="font-semibold mb-2">{{ question.question }}</p>
-            <div class="space-y-2">
-              <label v-for="answer in shuffleAnswers(question)" :key="answer" class="flex items-center">
-                <input type="radio" :name="`question-${index}`" :value="answer" v-model="userAnswers[index]" class="mr-2">
-                {{ answer }}
-              </label>
-            </div>
-          </div>
-          <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-            Submit Quiz
-          </button>
-        </form>
+  <div>
+    <Navbar />
+    <div class="container mx-auto mt-10">
+      <h1 class="text-4xl font-bold mb-4">{{ lesson.title }}</h1>
+      <div v-html="lesson.content" class="lesson-content mb-6"></div>
+      
+      <h2 class="text-2xl font-bold mt-6 mb-4">Flashcards</h2>
+      <div class="flex flex-wrap -mx-2">
+        <Flashcard v-for="card in lesson.flashcards" :key="card.front" :front="card.front" :back="card.back" class="w-1/2 px-2 mb-4" />
       </div>
+      
+      <h2 class="text-2xl font-bold mt-6 mb-4">Quiz</h2>
+      <Quiz :quiz="lesson.quiz" />
     </div>
+    <Footer />
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      lesson: {},
-      quiz: [],
-      userAnswers: []
-    }
-  },
-  async fetch() {
-    try {
-      const lessonResponse = await this.$axios.get(`/lessons/${this.$route.params.id}/`)
-      this.lesson = lessonResponse.data
+<script setup>
+import { useRoute } from 'vue-router'
+import { computed } from 'vue'
+import Navbar from '~/components/Navbar.vue'
+import Footer from '~/components/Footer.vue'
+import Flashcard from '~/components/Flashcard.vue'
+import Quiz from '~/components/Quiz.vue'
 
-      const quizResponse = await this.$axios.get(`/quizzes/?lesson=${this.$route.params.id}`)
-      this.quiz = quizResponse.data
-    } catch (error) {
-      console.error('Error fetching lesson data:', error)
+const route = useRoute()
+
+const lessons = {
+  1: {
+    title: 'Alphabet Basics',
+    content: '<p>Content for Alphabet Basics.</p>',
+    flashcards: [
+      { front: 'A', back: 'Apple' },
+      { front: 'B', back: 'Banana' }
+    ],
+    quiz: {
+      question: 'What does "A" stand for?',
+      options: ['Apple', 'Banana', 'Cat'],
+      answer: 'Apple'
     }
   },
-  methods: {
-    shuffleAnswers(question) {
-      const answers = [
-        question.correct_answer,
-        question.wrong_answer1,
-        question.wrong_answer2,
-        question.wrong_answer3
-      ]
-      return answers.sort(() => Math.random() - 0.5)
-    },
-    async submitQuiz() {
-      try {
-        const score = this.calculateScore()
-        await this.$axios.post('/progress/update_progress/', {
-          lesson_id: this.lesson.id,
-          completed: true,
-          score: score
-        })
-        this.$router.push('/dashboard')
-      } catch (error) {
-        console.error('Error submitting quiz:', error)
-      }
-    },
-    calculateScore() {
-      let score = 0
-      this.quiz.forEach((question, index) => {
-        if (this.userAnswers[index] === question.correct_answer) {
-          score++
-        }
-      })
-      return (score / this.quiz.length) * 100
-    }
-  }
+  //  Other lessons similarly...
 }
+
+const lesson = computed(() => lessons[route.params.id])
 </script>
+
+
+<style scoped>
+.lesson-content {
+  /* styles for lesson content goes here */
+}
+</style>
+

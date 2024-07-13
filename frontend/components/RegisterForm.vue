@@ -1,50 +1,33 @@
+<!--Updated components/RegisterForm.vue-->
+
 <template>
-  <form @submit.prevent="submitForm">
-    <div>
-      <label for="username">Username:</label>
-      <input type="text" id="username" v-model="username" required>
-    </div>
-    <div>
-      <label for="email">Email:</label>
-      <input type="email" id="email" v-model="email" required>
-    </div>
-    <div>
-      <label for="password">Password:</label>
-      <input type="password" id="password" v-model="password" required>
-    </div>
+  <form @submit.prevent="register">
+    <label for="fullName">Full Name:</label>
+    <input type="text" id="fullName" v-model="fullName" required>
+    <br>
+    <label for="email">Email:</label>
+    <input type="email" id="email" v-model="email" required>
+    <br>
+    <label for="password">Password:</label>
+    <input type="password" id="password" v-model="password" required>
+    <br>
+    <label for="confirmPassword">Confirm Password:</label>
+    <input type="password" id="confirmPassword" v-model="confirmPassword" required>
+    <br>
     <button type="submit">Register</button>
   </form>
 </template>
 
-<script>
-import { mapActions } from 'vuex'
+<script setup>
+import { ref } from 'vue';
 
-export default {
-  data() {
-    return {
-      username: '',
-      email: '',
-      password: ''
-    }
-  },
-  methods: {
-    ...mapActions(['registerUser']),
-    async submitForm() {
-      try {
-        await this.registerUser({
-          username: this.username,
-          email: this.email,
-          password: this.password
-        })
-        alert('Registration successful!')
-        // Clear the form
-        this.username = ''
-        this.email = ''
-        this.password = ''
-      } catch (error) {
-        alert('Registration failed: ' + error.response.data.message)
-      }
-    }
-  }
-}
+const fullName = ref('');
+const email = ref('');
+const password = ref('');
+const confirmPassword = ref('');
+
+const register = () => {
+  // Registration logic here
+};
 </script>
+
