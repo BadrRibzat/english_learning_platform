@@ -21,7 +21,7 @@
 
 <script setup>
 import { ref } from 'vue'
-import { useAuth0 } from '@/plugins/auth/auth0.vue'
+import { useAuth0 } from '@/plugins/auth/auth0'
 
 const email = ref('')
 const password = ref('')

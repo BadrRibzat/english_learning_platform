@@ -1,4 +1,5 @@
-// frontend/nuxt.config.ts
+import { defineNuxtConfig } from "nuxt/config";
+
 export default defineNuxtConfig({
   modules: [
     '@nuxtjs/tailwindcss',
@@ -6,23 +7,15 @@ export default defineNuxtConfig({
   ],
 
   plugins: [
-  '@/plugins/auth0'
-],
+    '@/plugins/auth/auth0'
+  ],
+
   css: [
-    '~/assets/styles/tailwind.css',
+    '@/assets/styles/tailwind.css',
   ],
 
   build: {
     transpile: ['@auth0/auth0-vue']
-  },
-
-  runtimeConfig: {
-    public: {
-      auth0: {
-        domain: process.env.AUTH0_DOMAIN,
-        clientId: process.env.AUTH0_CLIENT_ID,
-      }
-    }
   },
 
   app: {
