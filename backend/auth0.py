@@ -1,11 +1,15 @@
 # backend/auth0.py
 
+# backend/auth0.py
+
 from jose import jwt
 from urllib.request import urlopen
 import json
+from functools import wraps
+from flask import request, _request_ctx_stack
 
-AUTH0_DOMAIN = 'YOUR_AUTH0_DOMAIN'
-API_IDENTIFIER = 'YOUR_API_IDENTIFIER'
+AUTH0_DOMAIN = 'http://localhost:3000'
+API_IDENTIFIER = 'https://localhost:3000'
 ALGORITHMS = ['RS256']
 
 class AuthError(Exception):
@@ -31,8 +35,9 @@ def get_token_auth_header(request):
     return token
 
 def requires_auth(f):
+    @wraps(f)
     def decorated(*args, **kwargs):
-        token = get_token_auth_header()
+        token = get_token_auth_header(request)
         jsonurl = urlopen("https://"+ AUTH0_DOMAIN +"/.well-known/jwks.json")
         jwks = json.loads(jsonurl.read())
         unverified_header = jwt.get_unverified_header(token)

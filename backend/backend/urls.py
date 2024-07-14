@@ -15,11 +15,17 @@ Including another URLconf
 """
 # backend/backend/urls.py
 
-from django.contrib import admin
 from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from main.views import LevelViewSet, LessonViewSet, QuizViewSet, ProgressViewSet
+
+router = DefaultRouter()
+router.register(r'levels', LevelViewSet)
+router.register(r'lessons', LessonViewSet)
+router.register(r'quizzes', QuizViewSet)
+router.register(r'progress', ProgressViewSet)
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('api/', include('main.urls')),
+    path('api/', include(router.urls)),
 ]
 
