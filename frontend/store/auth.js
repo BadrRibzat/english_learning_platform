@@ -1,5 +1,4 @@
-//Updated frontend/store/auth.ts
-
+// store/auth.ts
 import { defineStore } from 'pinia'
 
 export const useAuthStore = defineStore('auth', {
@@ -8,7 +7,7 @@ export const useAuthStore = defineStore('auth', {
     isAuthenticated: false,
   }),
   actions: {
-    setUser(user) {
+    setUser(user: any) {
       this.user = user
       this.isAuthenticated = !!user
     },
@@ -18,3 +17,4 @@ export const useAuthStore = defineStore('auth', {
     },
   },
 })
+

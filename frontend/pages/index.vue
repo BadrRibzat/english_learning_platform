@@ -2,6 +2,7 @@
 <template>
   <div class="container mx-auto px-4 py-8">
     <h1 class="text-4xl font-bold mb-8">Welcome to English Learning Platform</h1>
+	<ProtectedContent />
     <p class="text-xl mb-8">Improve your English skills with our interactive lessons and exercises.</p>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       <div v-for="level in levels" :key="level.id" class="bg-white shadow-md rounded-lg p-6">
@@ -16,6 +17,7 @@
 </template>
 
 <script setup>
+import ProtectedContent from '~/components/ProtectedContent.vue'
 const levels = [
   { id: 1, title: 'Beginner', description: 'Start your English journey here' },
   { id: 2, title: 'Intermediate', description: 'Enhance your language skills' },

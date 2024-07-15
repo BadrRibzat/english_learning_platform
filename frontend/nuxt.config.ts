@@ -1,5 +1,3 @@
-import { defineNuxtConfig } from "nuxt/config";
-
 export default defineNuxtConfig({
   modules: [
     '@nuxtjs/tailwindcss',
@@ -7,7 +5,7 @@ export default defineNuxtConfig({
   ],
 
   plugins: [
-    '@/plugins/auth/auth0'
+    { src: '@/plugins/auth/auth0', mode: 'client' }
   ],
 
   css: [
@@ -31,5 +29,16 @@ export default defineNuxtConfig({
     }
   },
 
-  compatibilityDate: '2024-07-13'
+  runtimeConfig: {
+    public: {
+      auth0Domain: process.env.AUTH0_DOMAIN,
+      auth0ClientId: process.env.AUTH0_CLIENT_ID,
+      apiUrl: process.env.API_URL
+    }
+  },
+
+  ssr: false, // Adding this line to disable server-side rendering for Auth0
+
+  compatibilityDate: '2024-07-14',
 })
+

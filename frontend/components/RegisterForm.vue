@@ -1,39 +1,102 @@
-<!--Updated components/RegisterForm.vue-->
+<!-- components/RegisterForm.vue -->
 <template>
-  <div class="max-w-md mx-auto mt-8">
-    <h2 class="text-2xl font-bold mb-4">Register</h2>
-    <form @submit.prevent="handleRegister" class="space-y-4">
-      <div>
-        <label for="name" class="block mb-1">Name</label>
-        <input type="text" id="name" v-model="name" required class="w-full border rounded p-2">
-      </div>
-      <div>
-        <label for="email" class="block mb-1">Email</label>
-        <input type="email" id="email" v-model="email" required class="w-full border rounded p-2">
-      </div>
-      <div>
-        <label for="password" class="block mb-1">Password</label>
-        <input type="password" id="password" v-model="password" required class="w-full border rounded p-2">
-      </div>
-      <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
-        Register
-      </button>
+  <div class="form-container">
+    <h2>Register for Level {{ levelId }}</h2>
+    <form @submit.prevent="handleSubmit" class="register-form">
+      <input v-model="name" type="text" placeholder="Full Name" required>
+      <input v-model="email" type="email" placeholder="Email" required>
+      <input v-model="password" type="password" placeholder="Password" required>
+      <button type="submit" class="submit-btn">Register</button>
     </form>
+    <div class="social-login">
+      <button @click="socialLogin('facebook')" class="social-btn facebook">Facebook</button>
+      <button @click="socialLogin('instagram')" class="social-btn instagram">Instagram</button>
+      <button @click="socialLogin('linkedin')" class="social-btn linkedin">LinkedIn</button>
+      <button @click="socialLogin('github')" class="social-btn github">GitHub</button>
+      <button @click="socialLogin('tiktok')" class="social-btn tiktok">TikTok</button>
+      <button @click="socialLogin('google')" class="social-btn google">Google</button>
+    </div>
+    <p>Already have an account? <a @click="navigateToLogin" class="link">Login here</a></p>
   </div>
 </template>
 
-<script setup>
-import { ref } from 'vue'
-import { useAuth0 } from '@auth0/auth0-vue'
+<script setup lang="ts">
 
-const name = ref('')
-const email = ref('')
-const password = ref('')
-const { loginWithRedirect } = useAuth0()
+import { ref } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 
-const handleRegister = () => {
-  // we will typically call an API to register the user
-  // For this example, we'll just redirect to the login page
-  loginWithRedirect({ screen_hint: 'signup' })
-}
+const route = useRoute();
+const router = useRouter();
+const levelId = route.params.levelId;
+
+const name = ref('');
+const email = ref('');
+const password = ref('');
+const handleSubmit = () => {
+
+  // Handle form submission
+console.log('Form submitted', { name: name.value, email: email.value, password: password.value });
+};
+
+const socialLogin = (platform: string) => {
+  // Handle social media login
+  console.log('Social login with', platform);
+};
+
+const navigateToLogin = () => {
+  router.push({ name: 'login', params: { levelId } });
+};
 </script>
+
+<style scoped>
+.form-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.submit-btn, .social-btn {
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.submit-btn {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.social-btn {
+  color: white;
+}
+
+.facebook { background-color: #3b5998; }
+.instagram { background-color: #c13584; }
+.linkedin { background-color: #0077b5; }
+.github { background-color: #24292e; }
+.tiktok { background-color: #000000; }
+.google { background-color: #db4437; }
+
+.link {
+  color: #4CAF50;
+  cursor: pointer;
+}
+</style>
+

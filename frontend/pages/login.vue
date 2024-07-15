@@ -1,12 +1,14 @@
+<!-- pages/login.vue -->
 <template>
   <div>
-    <h1>Login</h1>
-    <LoginForm />
+    <Navbar />
+    <div class="container mx-auto py-8">
+      <LoginForm />
+    </div>
   </div>
 </template>
 
+
 <script setup>
-import LoginForm from '~/components/LoginForm.vue';
+import LoginForm from '@/components/LoginForm.vue'
 </script>
-
-

@@ -2,6 +2,7 @@
 <template>
   <div class="container mx-auto px-4 py-8">
     <h1 class="text-3xl font-bold mb-6">Admin Dashboard</h1>
+	<ProtectedContent />
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
       <div v-for="stat in stats" :key="stat.name" class="bg-white shadow-md rounded-lg p-6">
         <h2 class="text-xl font-semibold mb-2">{{ stat.name }}</h2>
@@ -32,7 +33,9 @@
 </template>
 
 <script setup>
+import ProtectedContent from '~/components/ProtectedContent.vue'
 import { ref } from 'vue'
+
 
 const stats = ref([
   { name: 'Total Users', value: 1250 },
