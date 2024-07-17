@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.header {
+  @apply sticky top-0 left-0 right-0 bg-white z-1000 border-b;
+}
+
+.header .flex {
+  @apply flex items-center justify-between relative p-6;
+}
+
+.header .flex .logo {
+  @apply text-3xl text-black;
+}
+
+.header .flex .search-form {
+  @apply w-96 rounded-lg bg-light-bg p-6 flex gap-8;
+}
+
+.header .flex .search-form input {
+  @apply w-full text-lg text-black bg-transparent;
+}
+
+.header .flex .search-form button {
+  @apply bg-transparent text-2xl cursor-pointer text-black;
+}
+
+.header .flex .search-form button:hover {
+  @apply text-main-color;
+}
+
+.header .flex .icons div {
+  @apply text-2xl text-black bg-light-bg rounded-lg h-16 w-16 leading-16 cursor-pointer text-center ml-3;
+}
+
+.header .flex .icons div:hover {
+  @apply bg-black text-white;
+}
+
+.header .flex .profile {
+  @apply absolute top-full right-8 bg-white rounded-lg p-6 text-center overflow-hidden origin-top-right scale-0 transition-transform duration-200;
+}
+
+.header .flex .profile.active {
+  @apply scale-100;
+}
+
+.header .flex .profile .image {
+  @apply h-40 w-40 rounded-full object-contain mb-4;
+}
+
+.header .flex .profile .name {
+  @apply text-2xl text-black truncate;
+}
+
+.header .flex .profile .role {
+  @apply text-lg text-light-color;
+}
+
+

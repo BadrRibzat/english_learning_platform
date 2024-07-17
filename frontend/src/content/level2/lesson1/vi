@@ -1,0 +1,11 @@
+
+<template>
+  <div>
+    <h2>Speaking Practice</h2>
+    <p>Talk about your family with a partner.</p>
+    <p>Example:</p>
+    <p>Person A: Who is in your family?</p>
+    <p>Person B: I have a mother, a father, and a sister.</p>
+  </div>
+</template>
+

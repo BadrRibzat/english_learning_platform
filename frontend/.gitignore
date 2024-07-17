@@ -1,52 +1,17 @@
-# Nuxt dev/build outputs
-.output
-.data
-.nuxt
-.nitro
-.cache
-dist
-
-# Node dependencies
-node_modules
-
-# Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# Misc
 .DS_Store
-.fleet
-.idea
-.vscode
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+node_modules
+/dist
 
-# Local env files
-.env
-.env.*
-!.env.example
 
-# Testing
-/coverage
+# local env files
+.env.local
+.env.*.local
 
-# Temporary files
-*.tmp
-*.bak
-*.swp
-
-# Build files
-/build
-
-# Debug files
+# Log files
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
 
 # Editor directories and files
 .idea
@@ -56,24 +21,3 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw?
-
-# Optional npm cache directory
-.npm
-
-# Optional eslint cache
-.eslintcache
-
-# Tailwind
-assets/styles/tailwind.css
-
-# Yarn integrity file
-.yarn-integrity
-
-# dotenv environment variables file (in case it's not covered by .env.*)
-.env
-
-# Serverless directories
-.serverless/
-
-# Pinia
-store/generated
