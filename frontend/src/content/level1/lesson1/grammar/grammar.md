@@ -1,7 +1,8 @@
 # Basic Sentence Structure
 
-## Subject + Verb + Object
+In English, a basic sentence structure follows the pattern: Subject + Verb + Object.
 
-- **I am** a student.
-- **You are** my friend.
+Example:
+- I am a student.
+- You are my friend.
 

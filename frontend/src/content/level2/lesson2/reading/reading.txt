@@ -1,3 +1,11 @@
+<!-- content/Level2/Lesson2/reading/reading.txt -->
 
-Every day, I wake up at 6 am. I brush my teeth and eat breakfast. Then, I go to school. After school, I do my homework and study. In the evening, I have dinner with my family and watch TV. I go to bed at 10 pm.
+Read the following passage and answer the questions below:
+
+Anna loves shopping for clothes. Every Saturday, she goes to her favorite store downtown. Last week, she bought a new dress and a pair of shoes. She likes to try on different outfits and always looks for sales.
+
+Questions:
+1. Where does Anna go shopping?
+2. What did Anna buy last week?
+3. What does Anna enjoy doing when she shops?
 

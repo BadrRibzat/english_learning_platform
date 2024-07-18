@@ -9,12 +9,17 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.6.0",
+    "@fortawesome/fontawesome-svg-core": "^6.6.0",
+    "@fortawesome/free-brands-svg-icons": "^6.6.0",
+    "@fortawesome/free-solid-svg-icons": "^6.6.0",
+    "@fortawesome/vue-fontawesome": "^3.0.8",
+    "axios": "^1.7.2",
     "core-js": "^3.8.3",
     "register-service-worker": "^1.7.2",
     "vue": "^3.2.13",
     "vue-i18n": "^9.13.1",
-    "vue-router": "^4.0.3",
-    "vuex": "^4.0.0"
+    "vue-router": "^4.4.0",
+    "vuex": "^4.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
@@ -51,7 +56,9 @@
     "parserOptions": {
       "parser": "@babel/eslint-parser"
     },
-    "rules": {"vue/multi-word-component-names": "off"}
+    "rules": {
+      "vue/multi-word-component-names": "off"
+    }
   },
   "browserslist": [
     "> 1%",

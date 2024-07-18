@@ -1,3 +1,6 @@
+// content/Level2/Lesson3/reading/reading.txt
 
-In spring, the weather is warm and flowers start to bloom. Summer is hot and sunny. Fall is cool and leaves change color. Winter is cold and sometimes snowy.
+Title: A Day in a Restaurant
+
+In a typical restaurant, customers have three main meals: breakfast, lunch, and dinner. Each meal has its own menu with various options to choose from. People often order different dishes based on their preferences and dietary habits. Sometimes, customers can see the chefs cooking their meals in the open kitchen, which adds to the dining experience.
 

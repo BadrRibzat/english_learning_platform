@@ -1,57 +1,66 @@
 <template>
   <div id="app">
-    <NavBar />
-    <div class="main-content">
-      <router-view />
-    </div>
-    <FooterComponent />
-    <ContentLoader v-if="loading" />
+    <header>
+      <nav class="bg-blue-600">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex items-center justify-between h-16">
+            <div class="flex items-center">
+              <router-link to="/" class="text-white font-bold text-xl">{{
+                $t("appName")
+              }}</router-link>
+            </div>
+            <div class="flex">
+              <router-link
+                v-for="(item, index) in navItems"
+                :key="index"
+                :to="item.path"
+                class="text-gray-300 hover:bg-blue-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+              >
+                {{ item.name }}
+              </router-link>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <router-view></router-view>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-4">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <p class="text-center">
+          &copy; {{ new Date().getFullYear() }} {{ $t("appName") }}.
+          {{ $t("allRightsReserved") }}
+        </p>
+      </div>
+    </footer>
+
+    <chat-bot />
   </div>
 </template>
 
 <script>
-import NavBar from "@/components/NavBar.vue";
-import FooterComponent from "@/components/FooterComponent.vue";
-import ContentLoader from "@/components/ContentLoader.vue";
-import { mapState } from "vuex";
+import ChatBot from "@/components/ChatBot.vue";
 
 export default {
   name: "App",
   components: {
-    NavBar,
-    FooterComponent,
-    ContentLoader,
+    ChatBot,
   },
-  computed: {
-    ...mapState(["loading"]),
+  data() {
+    return {
+      navItems: [
+        { name: this.$t("home"), path: "/" },
+        { name: this.$t("lessons"), path: "/lessons" },
+        { name: this.$t("practice"), path: "/practice" },
+        { name: this.$t("progress"), path: "/progress" },
+        { name: this.$t("community"), path: "/community" },
+        { name: this.$t("about"), path: "/about" },
+        { name: this.$t("contact"), path: "/contact" },
+      ],
+    };
   },
 };
 </script>
-
-<style lang="less">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-nav {
-  padding: 20px;
-}
-
-.main-content {
-  flex: 1;
-  padding: 20px;
-}
-
-footer {
-  padding: 10px;
-  background: #f5f5f5;
-  text-align: center;
-}
-</style>

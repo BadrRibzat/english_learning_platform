@@ -1,5 +1,4 @@
+# Lesson 1 Review: Telling Time
 
-# Review
-
-In this lesson, you learned about family members and possessive pronouns. Practice describing your family using the new vocabulary and grammar.
+Review the vocabulary and grammar learned in Lesson 1 about telling time. Practice using prepositions of time (at, in, on) correctly in sentences describing daily routines and schedules.
 

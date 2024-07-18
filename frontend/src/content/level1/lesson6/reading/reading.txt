@@ -1,0 +1,24 @@
+<!-- content/Level1/Lesson6/reading/reading.txt -->
+
+Read the following sentences and answer the questions below:
+
+---
+1. The dog barked loudly.
+2. Cats like to sleep in warm places.
+3. Birds build nests in trees.
+4. Elephants have long tusks.
+5. Fish swim in water.
+6. Turtles have shells to protect them.
+7. Lions are known as the kings of the jungle.
+8. Monkeys are playful animals.
+
+Questions:
+1. What did the dog do?
+2. Where do cats like to sleep?
+3. What do birds build?
+4. What do elephants have?
+5. Where do fish swim?
+6. What do turtles have to protect them?
+7. What are lions known as?
+8. What are monkeys like?
+

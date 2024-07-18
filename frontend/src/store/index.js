@@ -1,18 +1,10 @@
-// src/store/index.js
-
-import { createStore } from "vuex";
+import { createStore } from 'vuex';
 
 export default createStore({
   state: {
     user: null,
     lessons: [],
-    language: "en", // default language
-  },
-  getters: {
-    isAuthenticated: (state) => !!state.user,
-    getUser: (state) => state.user,
-    getLessons: (state) => state.lessons,
-    getLanguage: (state) => state.language,
+    progress: {},
   },
   mutations: {
     setUser(state, user) {
@@ -21,49 +13,36 @@ export default createStore({
     setLessons(state, lessons) {
       state.lessons = lessons;
     },
-    setLanguage(state, language) {
-      state.language = language;
-    },
-    addLesson(state, lesson) {
-      state.lessons.push(lesson);
+    updateProgress(state, { lessonId, progress }) {
+      state.progress[lessonId] = progress;
     },
   },
   actions: {
-    login({ commit }, user) {
-      // Simulate login API call
-      return new Promise((resolve) => {
-        setTimeout(() => {
-          commit("setUser", user);
-          resolve();
-        }, 1000);
-      });
+    login({ commit }, credentials) {
+      // Implement login logic here
+      // On success, commit the user
+      commit("setUser", { id: 1, name: "John Doe", email: "john@example.com" });
     },
     logout({ commit }) {
-      return new Promise((resolve) => {
-        setTimeout(() => {
-          commit("setUser", null);
-          resolve();
-        }, 1000);
-      });
+      // Implement logout logic here
+      commit("setUser", null);
     },
     fetchLessons({ commit }) {
-      // Simulate fetching lessons API call
-      return new Promise((resolve) => {
-        const lessons = [
-          { id: 1, title: "Lesson 1", content: "Content for lesson 1" },
-          { id: 2, title: "Lesson 2", content: "Content for lesson 2" },
-        ];
-        setTimeout(() => {
-          commit("setLessons", lessons);
-          resolve();
-        }, 1000);
-      });
+      // Implement API call to fetch lessons
+      const lessons = [
+        { id: 1, title: "Basic Greetings", level: "Beginner" },
+        { id: 2, title: "Present Simple Tense", level: "Beginner" },
+        { id: 3, title: "Asking Questions", level: "Intermediate" },
+      ];
+      commit("setLessons", lessons);
     },
-    changeLanguage({ commit }, language) {
-      commit("setLanguage", language);
+    updateLessonProgress({ commit }, { lessonId, progress }) {
+      commit("updateProgress", { lessonId, progress });
     },
   },
-  modules: {
-    // Add additional modules here if needed
+  getters: {
+    isAuthenticated: (state) => !!state.user,
+    userProgress: (state) => state.progress,
   },
 });
+

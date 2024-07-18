@@ -1,0 +1,14 @@
+<!-- content/Level1/Lesson10/reading/reading.txt -->
+
+Read the following paragraphs and answer the questions below:
+
+---
+Weather affects our daily lives. It determines what clothes we wear, how we travel, and even our mood. Weather conditions can change quickly, from sunny skies to sudden storms. Meteorologists use instruments to measure weather factors such as temperature, humidity, wind speed, and precipitation.
+
+Questions:
+1. Why is weather important?
+2. What do meteorologists measure?
+3. How does weather affect our daily lives?
+4. What instruments do meteorologists use?
+5. How quickly can weather conditions change?
+

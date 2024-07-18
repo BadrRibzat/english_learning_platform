@@ -1,5 +1,38 @@
+<!-- content/Level1/Lesson2/review/review.md -->
 
-# Review
+## Lesson 2 Review: Numbers and Counting
 
-In this lesson, you learned to count from 1 to 20 and how to use singular and plural nouns. Practice counting objects around you.
+### Vocabulary Review
+
+- Numbers 1-20
+- Count
+- How many
+
+### Grammar Review
+
+- Singular vs. Plural Nouns
+
+### Reading Review
+
+Answer the questions based on the reading passage "Counting at the Zoo".
+
+### Listening Review
+
+Listen to the audio and answer questions related to numbers and counting.
+
+### Speaking Review
+
+Practice counting objects and describing them using the vocabulary learned.
+
+### Writing Review
+
+Write about your favorite number and why you like it.
+
+### Quiz Review
+
+Take the quiz to test your knowledge of numbers and counting.
+
+### Final Test
+
+Complete the final test to assess your understanding of Lesson 2 concepts.
 

@@ -1,7 +1,12 @@
+**Reading Comprehension: Greetings and Introductions**
 
+Read the following text and answer the questions below:
 
-John: Hello! My name is John.
-Jane: Hi John, I am Jane. Nice to meet you.
-John: Nice to meet you too, Jane. How are you?
-Jane: I am good, thank you.
+Sarah: Hi, my name is Sarah. What's your name?
+James: Hello, Sarah. I'm James.
+Sarah: Nice to meet you, James.
+
+Questions:
+1. What is Sarah's name?
+2. How does James greet Sarah?
 

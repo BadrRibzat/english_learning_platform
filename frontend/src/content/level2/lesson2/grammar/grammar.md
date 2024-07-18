@@ -1,7 +1,12 @@
+<!-- content/Level2/Lesson2/grammar/grammar.md -->
 
-# Present Simple Tense
+# Grammar: Demonstratives (This, That, These, Those)
 
-- **I wake up** at 7 am.
-- **She brushes** her teeth.
-- **They eat** breakfast.
+**This** and **These** refer to objects that are near you or close in time.
+- This shirt is too small.
+- These shoes are comfortable.
+
+**That** and **Those** refer to objects that are farther away from you or further in time.
+- That dress is beautiful.
+- Those stores are closed on Sundays.
 

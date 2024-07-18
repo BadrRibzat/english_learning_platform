@@ -1,0 +1,28 @@
+<!-- content/Level1/Lesson9/reading/reading.txt -->
+
+Read the following sentences and answer the questions below:
+
+---
+1. Spring brings blooming flowers.
+2. Summer is a time for vacations.
+3. Autumn leaves change color.
+4. Winter snow covers the ground.
+5. Rain brings fresh water.
+6. Sunshine warms the earth.
+7. Clouds bring rain or shade.
+8. Wind moves tree branches.
+9. Temperature changes with seasons.
+10. Different seasons bring different activities.
+
+Questions:
+1. What happens in spring?
+2. What is summer known for?
+3. What happens to autumn leaves?
+4. What covers the ground in winter?
+5. What does rain bring?
+6. What does sunshine do?
+7. What do clouds bring?
+8. What does wind move?
+9. What changes with seasons?
+10. How do different seasons vary?
+

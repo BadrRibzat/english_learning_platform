@@ -1,5 +1,7 @@
+# Writing Task: Introduce Yourself
 
-# Writing Task
+Write a short paragraph introducing yourself. Include your name and a greeting.
 
-Introduce yourself in a few sentences. Include your name, where you are from, and something you like to do.
+Example:
+Hi, my name is [Your Name]. I'm [age] years old. Nice to meet you!
 

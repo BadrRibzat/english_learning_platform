@@ -1,0 +1,24 @@
+<!-- content/Level1/Lesson5/reading/reading.txt -->
+
+Read the following sentences and answer the questions below:
+
+---
+1. The sky is blue.
+2. She wore a red dress to the party.
+3. The sunflowers are yellow.
+4. The grass in the park is green.
+5. Purple is my favorite color.
+6. Oranges are orange in color.
+7. The baby's room is painted pink.
+8. His dog has brown fur.
+
+Questions:
+1. What color is the sky?
+2. What did she wear to the party?
+3. What color are the sunflowers?
+4. What color is the grass in the park?
+5. What is your favorite color?
+6. What color are oranges?
+7. What color is the baby's room?
+8. What color is his dog's fur?
+

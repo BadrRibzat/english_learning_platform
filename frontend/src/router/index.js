@@ -1,54 +1,48 @@
-// src/router/index.js
-import { createRouter, createWebHashHistory } from "vue-router";
-import HomeView from "../views/HomeView.vue";
-import AboutView from "../views/AboutView.vue";
-import LessonView from "../views/LessonView.vue";
-import LoginView from "../views/LoginView.vue";
-import ProfileView from "../views/ProfileView.vue";
-import RegisterView from "../views/RegisterView.vue";
-import ContactView from "../views/ContactView.vue";
-
-const routes = [
-  {
-    path: "/",
-    name: "home",
-    component: HomeView,
-  },
-  {
-    path: "/about",
-    name: "about",
-    component: AboutView,
-  },
-  {
-    path: "/lesson/:level/:lesson",
-    name: "lesson",
-    component: LessonView,
-  },
-  {
-    path: "/login",
-    name: "login",
-    component: LoginView,
-  },
-  {
-    path: "/profile",
-    name: "profile",
-    component: ProfileView,
-  },
-  {
-    path: "/register",
-    name: "register",
-    component: RegisterView,
-  },
-  {
-    path: "/contact",
-    name: "contact",
-    component: ContactView,
-  },
-];
+import { createRouter, createWebHistory, VueRouter } from "vue-router";
+import HomeView from "@/views/HomeView.vue";
+import LessonsView from "@/views/LessonsView.vue";
+import AboutView from "@/views/AboutView.vue";
+import ContactView from "@/views/ContactView.vue";
+import AdminView from "@/views/AdminView.vue";
+import UserProfileView from "@/views/UserProfileView.vue";
+import LoginView from "@/views/LoginView.vue";
+import RegisterView from "@/views/RegisterView.vue";
 
 const router = createRouter({
-  history: createWebHashHistory(),
-  routes,
+  history: createWebHistory(process.env.BASE_URL),
+  routes: [
+    { path: "/", name: "Home", component: HomeView },
+    { path: "/lessons", name: "Lessons", component: LessonsView },
+    { path: "/about", name: "About", component: AboutView },
+    { path: "/contact", name: "Contact", component: ContactView },
+    {
+      path: "/admin",
+      name: "Admin",
+      component: AdminView,
+      meta: { requiresAuth: true },
+    },
+    { path: "/profile", name: "UserProfile", component: UserProfileView },
+    { path: "/login", name: "Login", component: LoginView },
+    { path: "/register", name: "Register", component: RegisterView },
+  ],
 });
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some((record) => record.meta.requiresAuth)) {
+    // Check if user is authenticated
+    if (!isAuthenticated()) {
+      next({ name: "Home" });
+    } else {
+      next();
+    }
+  } else {
+    next();
+  }
+});
+
+function isAuthenticated() {
+  // Implement your authentication check here
+  return false;
+}
 
 export default router;
