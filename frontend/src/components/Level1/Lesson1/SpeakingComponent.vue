@@ -1,21 +1,25 @@
+<!--frontend/src/components/Level1/Lesson1/SpeakingComponent.vue-->
 <template>
-  <div>
-    <h2>Speaking Practice</h2>
-    <p>Practice speaking about your favorite activities:</p>
-    <ul>
-      <li>What do you like to do on weekends?</li>
-      <li>Who do you usually spend time with?</li>
-      <li>Describe your last vacation.</li>
+  <div class="p-4">
+    <h2 class="text-xl font-bold">Speaking Practice</h2>
+    <ul class="list-disc pl-5">
+      <li v-for="(sentence, index) in sentences" :key="index">
+        {{ sentence }}
+      </li>
     </ul>
   </div>
 </template>
 
 <script>
+import speakingData from "@/content/level1/lesson1/speaking.json";
+
 export default {
-  // Component logic
+  data() {
+    return {
+      sentences: speakingData.sentences,
+    };
+  },
 };
 </script>
 
-<style scoped>
-/* Component-specific styles */
-</style>
+<style scoped></style>

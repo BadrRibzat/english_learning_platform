@@ -1,24 +1,21 @@
+<!--frontend/src/components/Level1/Lesson1/GrammarComponent.vue-->
 <template>
-  <div>
-    <h2>Grammar Lesson</h2>
-    <p>
-      In this lesson, we will learn about basic sentence structure and verb
-      conjugation.
-    </p>
-    <ul>
-      <li>Subject-Verb Agreement</li>
-      <li>Past, Present, and Future Tenses</li>
-      <li>Basic Sentence Patterns</li>
-    </ul>
+  <div class="p-4">
+    <h2 class="text-xl font-bold">Grammar: Simple Present Tense</h2>
+    <div v-html="grammarContent"></div>
   </div>
 </template>
 
 <script>
+import grammarContent from "@/content/level1/lesson1/grammar.md";
+
 export default {
-  // Component logic
+  data() {
+    return {
+      grammarContent,
+    };
+  },
 };
 </script>
 
-<style scoped>
-/* Component-specific styles */
-</style>
+<style scoped></style>

@@ -1,23 +1,26 @@
+<!--frontend/src/components/Level1/Lesson1/VocabularyComponents.vue-->
 <template>
-  <div>
-    <h2>Vocabulary</h2>
-    <p>Learn new words and their meanings:</p>
-    <ul>
-      <li>Elephant - a large animal with a trunk and tusks</li>
-      <li>Sunny - when the weather is bright and warm</li>
-      <li>
-        Conjugation - changing verbs to match different subjects and tenses
+  <div class="p-4">
+    <h2 class="text-xl font-bold">Vocabulary</h2>
+    <ul class="list-disc pl-5">
+      <li v-for="word in vocabulary.words" :key="word.word">
+        <strong>{{ word.word }}</strong
+        >: {{ word.definition }}
       </li>
     </ul>
   </div>
 </template>
 
 <script>
+import vocabulary from "@/content/level1/lesson1/vocabulary.json";
+
 export default {
-  // Component logic
+  data() {
+    return {
+      vocabulary,
+    };
+  },
 };
 </script>
 
-<style scoped>
-/* Component-specific styles */
-</style>
+<style scoped></style>

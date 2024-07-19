@@ -1,4 +1,3 @@
-
 <template>
   <div class="chatbot">
     <!-- ChatBot content -->
@@ -8,10 +7,9 @@
 <script>
 export default {
   // Component logic
-}
+};
 </script>
 
 <style scoped>
 /* Component styles */
 </style>
-

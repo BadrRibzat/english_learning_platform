@@ -1,21 +1,20 @@
-import { createI18n } from 'vue-i18n'
+import { createI18n } from "vue-i18n";
 
 const messages = {
   en: {
-    welcome: 'Welcome',
+    welcome: "Welcome",
     // Add more translations here
   },
   es: {
-    welcome: 'Bienvenido',
+    welcome: "Bienvenido",
     // Add more translations here
   },
-}
+};
 
 const i18n = createI18n({
-  locale: 'en',
-  fallbackLocale: 'en',
+  locale: "en",
+  fallbackLocale: "en",
   messages,
-})
+});
 
-export default i18n
-
+export default i18n;

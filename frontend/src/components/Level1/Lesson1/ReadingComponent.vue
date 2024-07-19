@@ -1,25 +1,21 @@
+<!--frontend/src/components/Level1/Lesson1/ReadingComponents.vue-->
 <template>
-  <div>
-    <h2>Reading Comprehension</h2>
-    <p>Read the passage and answer the questions:</p>
-    <p>
-      "Today we visited the zoo. We saw elephants, lions, and giraffes. It was a
-      sunny day."
-    </p>
-    <ol>
-      <li>What did they see at the zoo?</li>
-      <li>How was the weather?</li>
-      <li>Did they have fun?</li>
-    </ol>
+  <div class="p-4">
+    <h2 class="text-xl font-bold">Reading Passage</h2>
+    <p>{{ readingText }}</p>
   </div>
 </template>
 
 <script>
+import readingText from "@/content/level1/lesson1/reading.md";
+
 export default {
-  // Component logic
+  data() {
+    return {
+      readingText,
+    };
+  },
 };
 </script>
 
-<style scoped>
-/* Component-specific styles */
-</style>
+<style scoped></style>

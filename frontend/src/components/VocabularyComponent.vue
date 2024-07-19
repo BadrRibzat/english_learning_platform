@@ -1,17 +1,26 @@
 <!-- src/components/VocabularyComponent.vue -->
 <template>
-  <div class="vocabulary-component">
-    <!-- VocabularyComponent content -->
+  <div>
+    <h2>Vocabulary</h2>
+    <MarkdownRender :source="vocabularyContent" />
   </div>
 </template>
 
 <script>
+import vocabularyContent from "@/content/level1/lesson1/vocabulary.md";
+
 export default {
-  // Component logic
-}
+  data() {
+    return {
+      vocabularyContent: "",
+    };
+  },
+  created() {
+    fetch(vocabularyContent)
+      .then((response) => response.text())
+      .then((text) => {
+        this.vocabularyContent = text;
+      });
+  },
+};
 </script>
-
-<style scoped>
-/* Component styles */
-</style>
-

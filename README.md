@@ -75,7 +75,28 @@ Navigate to pages/lessons/level3 and create lesson1.vue, lesson2.vue, and lesson
 - cd english_learning_platform/frontend/pages/lessons/level1
 - touch lesson1.vue lesson2.vue lesson3.vue
 - Repeat the process for levels 2, 3, 4, and 5.
-
+- Create/update Vue components in 'frontend/src/components/Level1/Lesson1/':
+- VocabularyComponent.vue
+- GrammarComponent.vue
+- ReadingComponent.vue
+- SpeakingComponent.vue
+- WritingComponent.vue
+- QuizComponent.vue
+to incorporate the content directory with subdirectories example:
+'content/level1/lesson1/...':
+- vocabulary.json
+- grammar.md
+- reading.md
+- speaking.json
+- writing.md
+- quiz.json
+- These files containing the content details for each level within directories and subdirectories that make it easy to updates and able to grow our app with other contents and levels if we would like to, and that Recomended by Vue.js to be more familiar with and follow best practice 
+- Update 'views/Level1/Lesson1View.vue' to incorporate the components 
+Update 'router/index.js' to include the new Lessons route
+Update 'store/index.js' to manage state for Levels, Lessons
+- All new components use Tailwind CSS classes
+- Update 'App.vue' to include navigation to the new lessons
+- filing each file,with your Personalized contents.
 
 
 

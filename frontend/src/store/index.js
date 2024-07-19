@@ -1,48 +1,70 @@
-import { createStore } from 'vuex';
+// Vue & Vuex store
 
-export default createStore({
+import Vue from 'vue';
+import Vuex from 'vuex';
+
+Vue.use(Vuex);
+
+export default new Vuex.Store({
   state: {
-    user: null,
-    lessons: [],
-    progress: {},
+    level1: {
+      lesson1: { completed: false, score: null },
+      lesson2: { completed: false, score: null },
+      lesson3: { completed: false, score: null },
+      lesson4: { completed: false, score: null },
+      lesson5: { completed: false, score: null },
+    },
+    level2: {
+      lesson1: { completed: false, score: null },
+      lesson2: { completed: false, score: null },
+      lesson3: { completed: false, score: null },
+      lesson4: { completed: false, score: null },
+      lesson5: { completed: false, score: null },
+    },
+    level3: {
+      lesson1: { completed: false, score: null },
+      lesson2: { completed: false, score: null },
+      lesson3: { completed: false, score: null },
+      lesson4: { completed: false, score: null },
+      lesson5: { completed: false, score: null },
+    },
+    level4: {
+      lesson1: { completed: false, score: null },
+      lesson2: { completed: false, score: null },
+      lesson3: { completed: false, score: null },
+      lesson4: { completed: false, score: null },
+      lesson5: { completed: false, score: null },
+    },
+    level5: {
+      lesson1: { completed: false, score: null },
+      lesson2: { completed: false, score: null },
+      lesson3: { completed: false, score: null },
+      lesson4: { completed: false, score: null },
+      lesson5: { completed: false, score: null },
+    },
   },
   mutations: {
-    setUser(state, user) {
-      state.user = user;
+    completeLesson(state, { level, lesson }) {
+      state[level][lesson].completed = true;
     },
-    setLessons(state, lessons) {
-      state.lessons = lessons;
-    },
-    updateProgress(state, { lessonId, progress }) {
-      state.progress[lessonId] = progress;
+    setScore(state, { level, lesson, score }) {
+      state[level][lesson].score = score;
     },
   },
   actions: {
-    login({ commit }, credentials) {
-      // Implement login logic here
-      // On success, commit the user
-      commit("setUser", { id: 1, name: "John Doe", email: "john@example.com" });
+    completeLesson({ commit }, payload) {
+      commit('completeLesson', payload);
     },
-    logout({ commit }) {
-      // Implement logout logic here
-      commit("setUser", null);
-    },
-    fetchLessons({ commit }) {
-      // Implement API call to fetch lessons
-      const lessons = [
-        { id: 1, title: "Basic Greetings", level: "Beginner" },
-        { id: 2, title: "Present Simple Tense", level: "Beginner" },
-        { id: 3, title: "Asking Questions", level: "Intermediate" },
-      ];
-      commit("setLessons", lessons);
-    },
-    updateLessonProgress({ commit }, { lessonId, progress }) {
-      commit("updateProgress", { lessonId, progress });
+    setScore({ commit }, payload) {
+      commit('setScore', payload);
     },
   },
   getters: {
-    isAuthenticated: (state) => !!state.user,
-    userProgress: (state) => state.progress,
+    getLessonStatus: (state) => (level, lesson) => {
+      return state[level][lesson];
+    },
+    getAllLessonsStatus: (state) => (level) => {
+      return state[level];
+    },
   },
 });
-
