@@ -24,10 +24,13 @@ frontend/node_modules/
 frontend/npm-debug.log
 frontend/yarn-error.log
 
-# Nuxt
-frontend/.nuxt
+# Vue
+frontend/.Vue.js
 frontend/.output
-frontend/.nitro
+
+# Env
+.env/
+env/
 
 # Editor directories and files
 .vscode/
